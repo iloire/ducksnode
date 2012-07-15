@@ -26,6 +26,11 @@ ducksnode.push('my_widget', 324, function (err, response_status){
 ## Examples
 Look into the "examples" folder
 
+## Tests
+Run the tests:
+
+```npm test
+
 ## Release History
 ### 0.1.0 Initial release
 
