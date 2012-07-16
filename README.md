@@ -1,6 +1,6 @@
 # ducksnode
 
-Ducksboard API wrapper on node.js
+Node.js Ducksboard API wrapper
 
 ## Getting Started
 Install the module with: `npm install ducksnode`
@@ -14,6 +14,9 @@ var ducksnode = require('ducksnode').create(options);
 
 // simple push to 'my_widget'
 ducksnode.push('my_widget', 324);
+
+//pushing an object instead of a primitive value.
+ducksnode.push('my_widget', {value: 324, timestamp: 1342421466862});
 
 // push to 'my_widget' with callback
 ducksnode.push('my_widget', 324, function (err, response_status){

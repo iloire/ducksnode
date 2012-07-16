@@ -1,6 +1,6 @@
 {
   "name": "ducksnode",
-  "description": "Ducksboard API wrapper on node.js",
+  "description": "Node.js Ducksboard API wrapper",
   "version": "0.1.0",
   "homepage": "https://github.com/iloire/ducksnode",
   "author": {
