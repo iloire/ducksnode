@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/iloire/ducksnode.png)](http://travis-ci.org/iloire/ducksnode)
 # ducksnode
 
 Node.js Ducksboard API wrapper
