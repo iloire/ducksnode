@@ -1,7 +1,7 @@
 [![build status](https://secure.travis-ci.org/iloire/ducksnode.png)](http://travis-ci.org/iloire/ducksnode)
 # ducksnode
 
-Node.js Ducksboard API wrapper
+Node.js Ducksboard API wrapper.
 
 ## Getting Started
 Install the module with: `npm install ducksnode`
