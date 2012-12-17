@@ -18,23 +18,6 @@ describe('Push', function(){
     done();
   });
 
-  it ('should require valid widget', function (done){
-    var options = {
-      api_key : 'bP9qjpnsfVPLadW2gKR3vF4t62LI4z3Dfkc0e7LmNCebxBUjKH',
-      request : {
-        post : function (options, callback) {
-          callback(null, null);
-        }
-      }
-    };
-
-    assert.throws(function(){
-      var ducksnode = require ('../lib/ducksnode').create(options);
-      ducksnode.push (2, 2);
-    });
-    done();
-  });
-
   it ('should push with api_key (no callback)', function (done){
     options.api_key = 'bP9qjpnsfVPLadW2gKR3vF4t62LI4z3Dfkc0e7LmNCebxBUjKH'; //this is an example. not a valid key
     var ducksnode = require ('../lib/ducksnode').create(options);
