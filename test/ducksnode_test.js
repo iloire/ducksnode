@@ -78,4 +78,20 @@ describe('Push', function(){
     });
   });
 
+  it('should push multiple times for array of widgets', function (done){
+    var count = 0;
+
+    options.request.post = function (options, callback) { //mock request post
+      callback(null, {statusCode:400}, '');
+    };
+
+    var ducksnode = require ('../lib/ducksnode').create(options);
+    ducksnode.push (['widget1', 'widget2'], {value: 3, timestamp: +new Date()}, function (err, response_status){
+      if(++count === 2){
+        assert.ok (true, 'Successfully made 2 post requests');
+        done();
+      }
+    });
+  });
+
 });
