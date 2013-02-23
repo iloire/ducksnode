@@ -25,6 +25,15 @@ ducksnode.push('my_widget', 324, function (err, response_status){
 		console.error(err); //error pushing to ducksboard server.
 	}
 });
+
+// push to more than one widget, with callback
+ducksnode.push(['my_widget1', 'my_widget2'], 324, function (err, response_status){
+  //this callback will be called once for each widget
+	if (err){
+		console.error(err); //error pushing to ducksboard server.
+	}
+});
+
 ```
 Run the tests with: `npm test` (requires mocha)
 
@@ -33,6 +42,9 @@ Look into the "examples" folder
 
 ## Release History
 ### 0.1.0 Initial release
+
+## Contributions
+- [mjschranz](https://github.com/mjschranz) : Allow for multiple widget id's to be sent at once.
 
 ## TODO
  - Pull API
