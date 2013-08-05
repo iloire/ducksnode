@@ -19,7 +19,7 @@ ducksnode.push ('boxes1', Math.random()*1000, function(err, response_status){
 });
 
 //with timestamp (we send object instead of primitive value)
-var timestamp = +new Date() - Math.random() * 100 * 60 * 60;
+var timestamp = (new Date() - Math.random() * 100 * 60 * 60) / 1000;
 ducksnode.push ('chart1', {value:111, timestamp: timestamp});
 
 // push to more than one widget, with callback
