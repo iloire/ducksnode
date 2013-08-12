@@ -117,8 +117,9 @@ describe('Pull', function(){
     done();
   });
 
-  it ('should pull with valid arguemnts (last three days)', function (done){
+  it ('should pull with valid arguments (last three days)', function (done){
     options.request.get = function (options, callback) { //mock request post
+      assert.ok(options.url.indexOf('/values/widget1/last?count=3') > -1);
       callback(null, {statusCode:200}, '');
     };
 
@@ -130,8 +131,9 @@ describe('Pull', function(){
     });
   });
 
-  it ('should pull with valid arguemnts (since 3600 seconds)', function (done){
+  it ('should pull with valid arguments (since 3600 seconds)', function (done){
     options.request.get = function (options, callback) { //mock request post
+      assert.ok(options.url.indexOf('/values/widget1/since?seconds=3600') > -1);
       callback(null, {statusCode:200}, '');
     };
 
@@ -143,8 +145,9 @@ describe('Pull', function(){
     });
   });
 
-  it ('should pull with valid arguemnts (timespan with optional timezone)', function (done){
+  it ('should pull with valid arguments (timespan with optional timezone)', function (done){
     options.request.get = function (options, callback) { //mock request post
+      assert.ok(options.url.indexOf('/values/widget1/&timezone=UTC') > -1);
       callback(null, {statusCode:200}, '');
     };
 
@@ -159,12 +162,14 @@ describe('Pull', function(){
   it('should pull multiple times for array of widgets', function (done){
     var count = 0;
 
-    options.request.post = function (options, callback) { //mock request post
-      callback(null, {statusCode:400}, '');
+    options.request.get = function (options, callback) { //mock request post
+      callback(null, {statusCode:200}, '');
     };
 
     var ducksnode = require ('../lib/ducksnode').create(options);
     ducksnode.pull (['widget1', 'widget2'], {last: 3}, function (err, response_status, data){
+      assert.equal (response_status, 200);
+      assert.ok (!err);
       if(++count === 2){
         assert.ok (true, 'Successfully made 2 pull requests');
         done();
