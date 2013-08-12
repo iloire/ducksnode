@@ -159,12 +159,14 @@ describe('Pull', function(){
   it('should pull multiple times for array of widgets', function (done){
     var count = 0;
 
-    options.request.post = function (options, callback) { //mock request post
-      callback(null, {statusCode:400}, '');
+    options.request.get = function (options, callback) { //mock request post
+      callback(null, {statusCode:200}, '');
     };
 
     var ducksnode = require ('../lib/ducksnode').create(options);
     ducksnode.pull (['widget1', 'widget2'], {last: 3}, function (err, response_status, data){
+      assert.equal (response_status, 200);
+      assert.ok (!err);
       if(++count === 2){
         assert.ok (true, 'Successfully made 2 pull requests');
         done();
