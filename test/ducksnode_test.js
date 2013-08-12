@@ -117,8 +117,9 @@ describe('Pull', function(){
     done();
   });
 
-  it ('should pull with valid arguemnts (last three days)', function (done){
+  it ('should pull with valid arguments (last three days)', function (done){
     options.request.get = function (options, callback) { //mock request post
+      assert.ok(options.url.indexOf('/values/widget1/last?count=3') > -1);
       callback(null, {statusCode:200}, '');
     };
 
@@ -130,8 +131,9 @@ describe('Pull', function(){
     });
   });
 
-  it ('should pull with valid arguemnts (since 3600 seconds)', function (done){
+  it ('should pull with valid arguments (since 3600 seconds)', function (done){
     options.request.get = function (options, callback) { //mock request post
+      assert.ok(options.url.indexOf('/values/widget1/since?seconds=3600') > -1);
       callback(null, {statusCode:200}, '');
     };
 
@@ -143,8 +145,9 @@ describe('Pull', function(){
     });
   });
 
-  it ('should pull with valid arguemnts (timespan with optional timezone)', function (done){
+  it ('should pull with valid arguments (timespan with optional timezone)', function (done){
     options.request.get = function (options, callback) { //mock request post
+      assert.ok(options.url.indexOf('/values/widget1/&timezone=UTC') > -1);
       callback(null, {statusCode:200}, '');
     };
 
