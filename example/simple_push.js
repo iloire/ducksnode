@@ -8,8 +8,11 @@ var ducksnode = require ('../lib/ducksnode').create(options);
 //simple push call
 ducksnode.push ('absolute', Math.random()*1000);
 
+//delta push call
+ducksnode.push ('counters',2,true);//delta value 
+
 //push call with callback
-ducksnode.push ('boxes1', Math.random()*1000, function(err, response_status){
+ducksnode.push ('boxes1', Math.random()*1000,false, function(err, response_status){
   if (err){
     console.error(err);
   }
@@ -23,7 +26,7 @@ var timestamp = +new Date() - Math.random() * 100 * 60 * 60;
 ducksnode.push ('chart1', {value:111, timestamp: timestamp});
 
 // push to more than one widget, with callback
-ducksnode.push(['my_widget1', 'my_widget2'], 324, function (err, response_status){
+ducksnode.push(['my_widget1', 'my_widget2'], 324,false, function (err, response_status){
   //this callback will be called once for each widget
   if (err){
     console.error(err); //error pushing to ducksboard server.
